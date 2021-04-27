@@ -15,7 +15,15 @@ class Post extends Controller
     }
 
     function post($id){
-    	$data['result'] = DB::table('posts')->where('id',$id)->get();
+    	$data['result'] = DB::table('posts')->where('slug',$id)->get();
     	return view('front.post',$data);
+    }
+    public static function page_menu(){
+    	$data = DB::table('pages')->where('status','1')->get();
+    	return $data;
+    }
+    function page($id){
+    	$data['result'] = DB::table('pages')->where('slug',$id)->get();
+    	return view('front.page',$data);
     }
 }

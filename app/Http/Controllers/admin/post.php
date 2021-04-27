@@ -21,6 +21,7 @@ class post extends Controller
     function submit(Request $request){
     	$request->validate([
     		'title'=>'required',
+            'slug'=>'required|unique:posts',
     		'short_desc'=>'required',
     		'long_desc'=>'required',
     		'image'=>'required|mimes:jpeg,jpg,png',
@@ -32,6 +33,7 @@ class post extends Controller
     	$image->storeAs('public/post', $file);
     	$data = array(
     		'title' =>$request->input('title'),
+            'slug' =>$request->input('slug'),
     		'short_desc' =>$request->input('short_desc'),
     		'long_desc' =>$request->input('long_desc'),
     		'image' =>$file,
@@ -59,6 +61,7 @@ class post extends Controller
     	
     	$request->validate([
     		'title'=>'required',
+            'slug'=>'required',
     		'short_desc'=>'required',
     		'long_desc'=>'required',
     		'image'=>'mimes:jpeg,jpg,png',
@@ -66,6 +69,7 @@ class post extends Controller
     	]);
     	$data = array(
     		'title' =>$request->input('title'),
+            'slug' =>$request->input('slug'),
     		'short_desc' =>$request->input('short_desc'),
     		'long_desc' =>$request->input('long_desc'),
     		'post_date' =>$request->input('post_date'),

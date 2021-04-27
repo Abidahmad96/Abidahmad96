@@ -5,7 +5,7 @@
 
 @foreach($result as $list)
 <div class="post-preview">
-          <a href="{{ url('post/'.$list->id)}}">
+          <a href="{{ url('post/'.$list->slug)}}">
             <h2 class="post-title">
               {{$list->title}}
             </h2>
@@ -16,9 +16,6 @@
           <p class="post-meta">Posted 
             on {{$list->post_date}}</p>
         </div>
-                <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-        </div>
+        
 @endforeach
 @endsection

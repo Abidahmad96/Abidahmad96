@@ -38,15 +38,15 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url('/')}}">Home</a>
           </li>
+          <?php
+            use App\Http\Controllers\front\Post;
+            $result =Post::page_menu();
+          ?>
+          @foreach( $result as $page)
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="{{ url('/page/'.$page->slug)}}">{{$page->name}}</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="post.html">Sample Post</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
+          @endforeach
         </ul>
       </div>
     </div>
